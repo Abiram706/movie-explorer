@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
+import { ThemeProvider, createTheme, CssBaseline, Box, Container } from '@mui/material';
 import Home from './pages/Home';
 import MovieDetails from './pages/MovieDetails';
-import Favorites from './pages/Favorites';
+import Favorites from './pages/Favourites.js';
 import NotFound from './pages/NotFound';
 import Navbar from './components/Navbar';
 import { MovieProvider, MovieContext } from './context/MovieContext';
@@ -27,27 +27,22 @@ const AppContent = () => {
         paper: darkMode ? '#1e1e1e' : '#ffffff',
       },
     },
-    components: {
-      MuiCard: {
-        styleOverrides: {
-          root: {
-            backgroundColor: darkMode ? '#1e1e1e' : '#ffffff',
-          },
-        },
-      },
-    },
   });
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/movie/:id" element={<MovieDetails />} />
-        <Route path="/favorites" element={<Favorites />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <Box sx={{ pt: 8, pb: 4 }}>
+        <Container maxWidth="lg">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/movie/:id" element={<MovieDetails />} />
+            <Route path="/favorites" element={<Favorites />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Container>
+      </Box>
     </ThemeProvider>
   );
 };
