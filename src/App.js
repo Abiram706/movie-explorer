@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider, createTheme, CssBaseline, Box, Container } from '@mui/material';
 import Home from './pages/Home';
@@ -7,6 +7,20 @@ import Favorites from './pages/Favourites.js';
 import NotFound from './pages/NotFound';
 import Navbar from './components/Navbar';
 import { MovieProvider, MovieContext } from './context/MovieContext';
+import './App.css';
+
+// Title updater component that handles only title changes
+const TitleUpdater = () => {
+  useEffect(() => {
+    // Direct title update
+    document.title = "Movie Explorer App";
+    
+    // For debugging
+    console.log("Title updated to: Movie Explorer App");
+  }, []);
+  
+  return null; // This component doesn't render anything
+};
 
 // App wrapper that provides theme based on dark mode context
 const AppContent = () => {
@@ -32,6 +46,7 @@ const AppContent = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <TitleUpdater />
       <Navbar />
       <Box sx={{ pt: 8, pb: 4 }}>
         <Container maxWidth="lg">
