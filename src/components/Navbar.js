@@ -5,11 +5,11 @@ import {
   Box,
   Toolbar,
   Typography,
-  Button,
   IconButton,
   Container,
   Tooltip,
 } from '@mui/material';
+
 import HomeIcon from '@mui/icons-material/Home';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
